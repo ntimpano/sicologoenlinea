@@ -1,0 +1,233 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import PlaceholderImage from '@/components/PlaceholderImage.astro';
+import { MESSAGES } from '@/utils/whatsapp';
+
+const valores = [
+  {
+    titulo: 'Profesionalismo',
+    descripcion: 'Equipo de psicólogos licenciados y en constante actualización profesional.',
+    icono: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    titulo: 'Confidencialidad',
+    descripcion: 'Protegemos tu privacidad con el más estricto secreto profesional.',
+    icono: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+  },
+  {
+    titulo: 'Empatía',
+    descripcion: 'Te acompañamos con comprensión genuina y calidez humana en tu proceso.',
+    icono: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  },
+  {
+    titulo: 'Accesibilidad',
+    descripcion: 'Terapia online desde donde estés, con horarios flexibles adaptados a ti.',
+    icono: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+];
+
+const especialidades = [
+  'Trastornos de ansiedad',
+  'Depresión y trastornos del ánimo',
+  'Terapia de pareja',
+  'Duelo y procesos de pérdida',
+  'Autoestima y desarrollo personal',
+  'Estrés y burnout',
+  'Orientación vocacional',
+  'Manejo de crisis emocionales',
+];
+---
+
+<BaseLayout
+  title="Sobre Nosotros"
+  description="Conoce a sicologoenlinea, equipo de psicólogos profesionales especializados en atención online en Colombia."
+>
+  <!-- Hero Section -->
+  <Section padding="lg" class="bg-gradient-to-br from-accent to-primary-50">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="mb-6">Sobre sicologoenlinea</h1>
+        <p class="text-xl text-gray-800 leading-relaxed">
+          Somos un equipo de psicólogos profesionales comprometidos con tu bienestar emocional
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Misión y Visión -->
+  <Section padding="lg">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <PlaceholderImage
+            width={600}
+            height={400}
+            text="Equipo sicologoenlinea"
+            variant="primary"
+            alt="Equipo de sicologoenlinea"
+            class="rounded-2xl shadow-soft-lg"
+          />
+        </div>
+        <div>
+          <h2 class="mb-6">Nuestra Misión</h2>
+          <p class="text-gray-800 text-lg leading-relaxed mb-6">
+            Brindar atención psicológica profesional y accesible a través de plataformas digitales, acompañando a personas en Colombia en su proceso de bienestar emocional y crecimiento personal.
+          </p>
+          <p class="text-gray-800 text-lg leading-relaxed">
+            Creemos que la salud mental es un derecho fundamental y trabajamos para eliminar barreras de acceso mediante la tecnología, sin comprometer la calidad y calidez de la atención humana.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Valores -->
+  <Section padding="lg" class="bg-gray-50">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="mb-4">Nuestros Valores</h2>
+        <p class="text-lg text-gray-800 max-w-2xl mx-auto">
+          Los principios que guían nuestra práctica profesional
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {valores.map((valor) => (
+          <Card class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-primary-100 rounded-2xl flex items-center justify-center">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={valor.icono} />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">{valor.titulo}</h3>
+            <p class="text-gray-700 text-sm">{valor.descripcion}</p>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Especialidades -->
+  <Section padding="lg">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="mb-6">Nuestras Especialidades</h2>
+          <p class="text-gray-800 text-lg mb-6">
+            Nuestro equipo cuenta con formación especializada y experiencia en diversas áreas de la psicología clínica:
+          </p>
+          <ul class="space-y-3">
+            {especialidades.map((especialidad) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-gray-800 text-lg">{especialidad}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <PlaceholderImage
+            width={600}
+            height={500}
+            text="Especialidades"
+            variant="secondary"
+            alt="Especialidades de sicologoenlinea"
+            class="rounded-2xl shadow-soft-lg"
+          />
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Enfoque Terapéutico -->
+  <Section padding="lg" class="bg-gray-50">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="mb-4">Nuestro Enfoque Terapéutico</h2>
+          <p class="text-lg text-gray-800">
+            Trabajamos con metodologías basadas en evidencia científica
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <h3 class="text-xl font-bold mb-3">Terapia Cognitivo-Conductual</h3>
+            <p class="text-gray-700">
+              Enfoque estructurado que te ayuda a identificar y modificar patrones de pensamiento y comportamiento que generan malestar emocional.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-xl font-bold mb-3">Enfoque Humanista</h3>
+            <p class="text-gray-700">
+              Centramos la atención en tu experiencia única, potencial de crecimiento y capacidad innata de autoconocimiento y desarrollo personal.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-xl font-bold mb-3">Terapia Sistémica</h3>
+            <p class="text-gray-700">
+              Para terapia de pareja y familiar, comprendemos las dinámicas relacionales y trabajamos en la mejora de la comunicación y vínculos.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-xl font-bold mb-3">Mindfulness</h3>
+            <p class="text-gray-700">
+              Integramos técnicas de atención plena para ayudarte a desarrollar conciencia del momento presente y reducir el estrés.
+            </p>
+          </Card>
+        </div>
+
+        <div class="mt-12 p-8 bg-white rounded-2xl shadow-soft text-center">
+          <p class="text-gray-700 text-lg mb-2">
+            <strong>Adaptamos nuestro enfoque a tus necesidades específicas,</strong>
+          </p>
+          <p class="text-gray-700">
+            combinando diferentes metodologías para crear un plan terapéutico personalizado que respete tu ritmo y objetivos.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Compromiso Ético -->
+  <Section padding="lg">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="mb-6">Compromiso Ético y Profesional</h2>
+        <p class="text-gray-800 text-lg leading-relaxed mb-6">
+          Todos nuestros psicólogos están debidamente licenciados y registrados ante las autoridades competentes de Colombia. Nos regimos por la <strong>Ley 1090 de 2006</strong> (Código Deontológico del Psicólogo en Colombia) y mantenemos los más altos estándares de práctica profesional.
+        </p>
+        <p class="text-gray-800 text-lg leading-relaxed">
+          Actualizamos constantemente nuestros conocimientos mediante formación continua y supervisión profesional para brindarte la mejor atención posible.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA Final -->
+  <Section padding="lg" class="bg-primary text-white">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="mb-6 text-white">¿Listo para comenzar tu proceso?</h2>
+        <p class="text-xl mb-8 text-primary-50">
+          Estamos aquí para acompañarte. Agenda tu primera sesión y da el primer paso hacia tu bienestar emocional.
+        </p>
+        <WhatsAppButton message={MESSAGES.AGENDAR_CITA}>
+          <span class="text-lg px-4">Agendar mi sesión</span>
+        </WhatsAppButton>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- WhatsApp Floating Button -->
+  <WhatsAppButton message={MESSAGES.CONSULTA_GENERAL} variant="floating" position="bottom-right" />
+</BaseLayout>

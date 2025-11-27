@@ -1,0 +1,53 @@
+---
+import { formatDate } from '@/utils/format';
+
+export interface Props {
+  allPosts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      fecha: Date;
+    };
+  }>;
+}
+
+const { allPosts } = Astro.props;
+
+// Ordenar por fecha descendente
+const sortedPosts = allPosts.sort((a, b) => b.data.fecha.getTime() - a.data.fecha.getTime());
+---
+
+<aside class="space-y-8">
+  <!-- Lista de posts -->
+  <div class="bg-white rounded-2xl shadow-soft p-6">
+    <h3 class="text-xl font-bold mb-4">Publicaciones recientes</h3>
+    <ul class="space-y-4">
+      {sortedPosts.map((post) => (
+        <li class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
+          <a href={`/blog/${post.slug}`} class="block group">
+            <h4 class="font-medium text-sm mb-1 group-hover:text-primary transition-smooth line-clamp-2">
+              {post.data.title}
+            </h4>
+            <p class="text-xs text-gray-600">
+              {formatDate(post.data.fecha)}
+            </p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- CTA Contacto -->
+  <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white">
+    <h3 class="text-xl font-bold mb-3">¿Necesitas ayuda profesional?</h3>
+    <p class="text-primary-50 text-sm mb-4">
+      Nuestro equipo está aquí para acompañarte en tu proceso de bienestar emocional.
+    </p>
+    <a
+      href="/servicios"
+      class="inline-block w-full text-center px-4 py-3 bg-white text-primary rounded-xl font-medium hover:bg-primary-50 transition-smooth"
+    >
+      Ver servicios
+    </a>
+  </div>
+</aside>

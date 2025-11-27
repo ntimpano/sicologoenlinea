@@ -27,7 +27,21 @@ const ebooksCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    descripcionCorta: z.string().max(160),
+    autor: z.string().default('Equipo sicologoenlinea'),
+    fecha: z.date(),
+    imagenUrl: z.string().optional(),
+    destacado: z.boolean().default(false),
+    metaKeywords: z.array(z.string()).optional(),
+  }),
+});
+
 export const collections = {
   services: servicesCollection,
   ebooks: ebooksCollection,
+  blog: blogCollection,
 };

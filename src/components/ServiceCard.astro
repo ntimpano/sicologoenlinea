@@ -1,0 +1,88 @@
+---
+import Card from './ui/Card.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import PlaceholderImage from './PlaceholderImage.astro';
+import { formatPrice } from '@/utils/format';
+import { MESSAGES } from '@/utils/whatsapp';
+
+export interface Props {
+  title: string;
+  modalidad: string;
+  duracion: number;
+  precioCop: number;
+  descripcion: string;
+  beneficios: string[];
+  slug: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+}
+
+const {
+  title,
+  modalidad,
+  duracion,
+  precioCop,
+  descripcion,
+  beneficios,
+  slug,
+  variant = 'primary',
+} = Astro.props;
+
+const modalidadLabel = {
+  individual: 'Individual',
+  parejas: 'Parejas',
+  familiar: 'Familiar',
+  grupal: 'Grupal',
+};
+---
+
+<Card class="flex flex-col h-full">
+  <div class="mb-4">
+    <PlaceholderImage
+      width={400}
+      height={250}
+      text={title}
+      variant={variant}
+      alt={`Servicio: ${title}`}
+      class="rounded-xl"
+    />
+  </div>
+
+  <div class="mb-2 flex items-center gap-2">
+    <span class="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-lg text-sm font-medium">
+      {modalidadLabel[modalidad] || modalidad}
+    </span>
+    <span class="text-sm text-gray-600">
+      {duracion} min
+    </span>
+  </div>
+
+  <h3 class="text-2xl mb-3">{title}</h3>
+  
+  <p class="text-gray-800 mb-4 flex-grow">
+    {descripcion}
+  </p>
+
+  {beneficios.length > 0 && (
+    <div class="mb-4">
+      <p class="font-semibold text-black mb-2 text-sm">Beneficios:</p>
+      <ul class="text-sm text-gray-700 space-y-1">
+        {beneficios.slice(0, 3).map((beneficio) => (
+          <li class="flex items-start gap-2">
+            <span class="text-primary mt-1">✓</span>
+            <span>{beneficio}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <div class="mt-auto">
+    <p class="text-primary font-bold text-2xl mb-4">{formatPrice(precioCop)}</p>
+    <WhatsAppButton 
+      message={MESSAGES.INFO_SERVICIO(title)} 
+      class="w-full justify-center"
+    >
+      Consultar disponibilidad
+    </WhatsAppButton>
+  </div>
+</Card>

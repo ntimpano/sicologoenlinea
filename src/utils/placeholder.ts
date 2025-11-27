@@ -9,16 +9,16 @@ export function generatePlaceholder(
 ): string {
   const gradients = {
     primary: {
-      from: '#4A90E2',
-      to: '#7FCDCD',
+      from: '#16c5b4',
+      to: '#3bf5cd',
     },
     secondary: {
-      from: '#7FCDCD',
-      to: '#F5F1E8',
+      from: '#3bf5cd',
+      to: '#73fadd',
     },
     accent: {
-      from: '#F5F1E8',
-      to: '#4A90E2',
+      from: '#cff4ec',
+      to: '#eefffb',
     },
   };
 
@@ -37,12 +37,12 @@ export function generatePlaceholder(
       <text
         x="50%"
         y="50%"
-        font-family="Inter, sans-serif"
+        font-family="Futura, Helvetica, sans-serif"
         font-size="18"
         fill="white"
         text-anchor="middle"
         dominant-baseline="middle"
-        opacity="0.8"
+        opacity="0.9"
       >
         ${displayText}
       </text>

@@ -1,0 +1,81 @@
+---
+import Card from './ui/Card.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import PlaceholderImage from './PlaceholderImage.astro';
+import { formatPrice } from '@/utils/format';
+import { MESSAGES } from '@/utils/whatsapp';
+
+export interface Props {
+  title: string;
+  precioCop: number;
+  descripcion: string;
+  paginas: number;
+  temas: string[];
+  destacado?: boolean;
+  slug: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+}
+
+const {
+  title,
+  precioCop,
+  descripcion,
+  paginas,
+  temas,
+  destacado = false,
+  slug,
+  variant = 'primary',
+} = Astro.props;
+---
+
+<Card class="flex flex-col h-full">
+  {destacado && (
+    <div class="mb-3">
+      <span class="inline-block px-3 py-1 bg-secondary text-white rounded-lg text-xs font-bold uppercase">
+        Destacado
+      </span>
+    </div>
+  )}
+
+  <div class="mb-4">
+    <PlaceholderImage
+      width={300}
+      height={400}
+      text={title}
+      variant={variant}
+      alt={`Ebook: ${title}`}
+      class="rounded-xl"
+    />
+  </div>
+
+  <h4 class="text-xl mb-2 font-bold">{title}</h4>
+  
+  <p class="text-gray-800 mb-3 text-sm flex-grow">
+    {descripcion}
+  </p>
+
+  <div class="mb-3">
+    <p class="text-xs text-gray-600 mb-2">
+      📄 {paginas} páginas
+    </p>
+    {temas.length > 0 && (
+      <div class="flex flex-wrap gap-1">
+        {temas.slice(0, 3).map((tema) => (
+          <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+            {tema}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div class="mt-auto">
+    <p class="text-secondary font-bold text-lg mb-3">{formatPrice(precioCop)}</p>
+    <WhatsAppButton 
+      message={MESSAGES.INFO_EBOOK(title)} 
+      class="w-full justify-center text-sm"
+    >
+      Solicitar información
+    </WhatsAppButton>
+  </div>
+</Card>

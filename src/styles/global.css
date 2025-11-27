@@ -4,15 +4,17 @@
 
 @layer base {
   :root {
-    --color-primary: #4a90e2;
-    --color-secondary: #7fcdcd;
-    --color-accent: #f5f1e8;
-    --color-text: #374151;
-    --color-background: #fafafa;
+    --color-primary: #16c5b4;
+    --color-secondary: #3bf5cd;
+    --color-accent: #eefffb;
+    --color-text: #000000;
+    --color-background: #eefffb;
   }
 
   body {
-    @apply bg-[#FAFAFA] text-gray-700 font-body;
+    background-color: #eefffb;
+    color: #000000;
+    font-family: 'Anton', 'Helvetica', Arial, system-ui, sans-serif;
   }
 
   h1,
@@ -21,28 +23,65 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-semibold text-gray-900;
+    font-family: 'Futura', 'Helvetica', Arial, system-ui, sans-serif;
+    font-weight: 700;
+    color: #000000;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    font-size: 2.25rem;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-size: 1.875rem;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    font-size: 1.5rem;
   }
 
   h4 {
-    @apply text-xl md:text-2xl;
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.25rem;
+    }
+    h3 {
+      font-size: 1.875rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.75rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    h3 {
+      font-size: 2.25rem;
+    }
+  }
+
+  .title-red {
+    color: #FF0000;
+  }
+
+  .title-blue {
+    color: #0066CC;
   }
 }
 
 @layer utilities {
   .transition-smooth {
-    @apply transition-all duration-300 ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 }

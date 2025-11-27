@@ -18,6 +18,57 @@ const {
 const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://sicologoenlinea.co';
 const fullTitle = `${title} | sicologoenlinea`;
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// JSON-LD Organization Schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'sicologoenlinea',
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  description: 'Atención psicológica profesional online en Colombia',
+  sameAs: [
+    'https://instagram.com/sicologoenlinea',
+    'https://facebook.com/sicologoenlinea',
+    'https://linkedin.com/company/sicologoenlinea',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    areaServed: 'CO',
+    availableLanguage: 'Spanish',
+  },
+};
+
+// JSON-LD LocalBusiness Schema
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'sicologoenlinea',
+  image: `${siteUrl}/logo.png`,
+  '@id': siteUrl,
+  url: siteUrl,
+  telephone: import.meta.env.PUBLIC_WHATSAPP_NUMBER || '',
+  priceRange: '$$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CO',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    addressCountry: 'CO',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '06:00',
+    closes: '22:00',
+  },
+  sameAs: [
+    'https://instagram.com/sicologoenlinea',
+    'https://facebook.com/sicologoenlinea',
+  ],
+};
 ---
 
 <!-- Primary Meta Tags -->
@@ -45,3 +96,9 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 <meta name="robots" content="index, follow" />
 <meta name="language" content="Spanish" />
 <meta name="author" content="sicologoenlinea" />
+<meta name="geo.region" content="CO" />
+<meta name="geo.placename" content="Colombia" />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

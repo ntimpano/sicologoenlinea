@@ -5,7 +5,17 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://sicologoenlinea.co',
-  integrations: [tailwind(), sitemap()],
+  integrations: [
+    tailwind(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-CO',
+        },
+      },
+    }),
+  ],
   output: 'static',
   adapter: vercel(),
 });

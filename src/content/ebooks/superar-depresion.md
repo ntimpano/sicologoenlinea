@@ -1,16 +1,17 @@
 ---
-title: Camino hacia el Bienestar Emocional
+title: Comunicar mis traumas en pareja
 precioCop: 50000
-descripcion: Estrategias comprobadas para superar la depresión y recuperar tu vitalidad
+descripcion: Aprende a hablar sin miedo, sin aferrarte y sin callar lo que duele. Regula tu cuerpo antes de comunicar y expresa tus necesidades sin ansiedad, sin culpa y sin miedo al rechazo.
 paginas: 102
 temas:
-  - Comprensión de la depresión
-  - Activación conductual
-  - Rutinas de autocuidado
-  - Conexión social y apoyo
-  - Prevención de recaídas
+  - Comunicación sin miedo
+  - Regulación emocional en pareja
+  - Expresar necesidades sin ansiedad
+  - Superar miedo al rechazo
+  - Dejar de callar lo que duele
 destacado: true
-orden: 2
+orden: 1
+imagenUrl: /comunicar_mis_traumas_en_pareja.jpg
 ---
 
 ## Sobre este ebook

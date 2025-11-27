@@ -1,16 +1,17 @@
 ---
-title: Construye tu Autoestima
+title: Límites sin culpa
 precioCop: 40000
-descripcion: Ejercicios prácticos para fortalecer tu confianza personal y amor propio
+descripcion: Poner límites no es ser mala, es dejar de sobrevivir. Este cuaderno te enseña a cuidarte sin justificarte, sin complacer para ser aceptada y sin sentirte responsable de todo.
 paginas: 78
 temas:
-  - Bases de la autoestima
-  - Diálogo interno positivo
-  - Establecimiento de límites
-  - Aceptación personal
-  - Ejercicios de empoderamiento
+  - Poner límites sin culpa
+  - Dejar de complacer
+  - Cuidarse sin justificarse
+  - No sentirse responsable de todo
+  - Amor propio sin olvidarte
 destacado: true
-orden: 3
+orden: 2
+imagenUrl: /aprendo_a_poner_limites_sin_sentirme_culpable.jpg
 ---
 
 ## Sobre este ebook

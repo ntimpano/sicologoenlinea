@@ -24,6 +24,7 @@ const ebooksCollection = defineCollection({
     temas: z.array(z.string()),
     destacado: z.boolean().default(false),
     orden: z.number(),
+    imagenUrl: z.string().optional(),
   }),
 });
 

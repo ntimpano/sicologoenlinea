@@ -1,17 +1,17 @@
 ---
-title: Relaciones Saludables y Comunicación Efectiva
-slug: relaciones-saludables
+title: Sanar el miedo al futuro
 precioCop: 45000
-descripcion: Guía para construir vínculos sanos y comunicarte de manera asertiva
+descripcion: Tu ansiedad no viene del mañana, viene de un sistema nervioso en alerta. Aprende a crear seguridad interna para que el futuro deje de sentirse peligroso.
 paginas: 90
 temas:
-  - Comunicación asertiva
-  - Resolución de conflictos
-  - Establecimiento de límites
-  - Señales de toxicidad
-  - Fortalecimiento de vínculos
-destacado: false
-orden: 4
+  - Calmar sistema nervioso
+  - Crear seguridad interna
+  - Reducir ansiedad anticipatoria
+  - Regulación del miedo
+  - Calma real en el cuerpo
+destacado: true
+orden: 3
+imagenUrl: /sanar_el_miedo_al_futuro.jpg
 ---
 
 ## Sobre este ebook

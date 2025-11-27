@@ -1,17 +1,17 @@
 ---
-title: Gestión del Estrés Laboral y Personal
-slug: gestion-estres
+title: Dejo de sobrepensar
 precioCop: 40000
-descripcion: Técnicas efectivas para manejar el estrés y recuperar tu equilibrio
+descripcion: Tu mente no quiere dañarte, quiere protegerte. Este cuaderno te enseña a bajar la alerta del cuerpo para que el pensamiento deje de pelear, de anticipar problemas y de agotarte.
 paginas: 72
 temas:
-  - Identificación de estresores
-  - Técnicas de relajación
-  - Gestión del tiempo
-  - Balance vida-trabajo
-  - Prevención del burnout
-destacado: false
-orden: 5
+  - Dejar de sobrepensar
+  - Bajar alerta del cuerpo
+  - Reducir pensamiento rumiante
+  - Calmar anticipación de problemas
+  - Regular sistema nervioso
+destacado: true
+orden: 4
+imagenUrl: /a_partir_de_hoy_dejo_de_sobrepensar_y_no_le_temo_mas_al_futuro.jpg
 ---
 
 ## Sobre este ebook

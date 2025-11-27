@@ -14,7 +14,10 @@
   body {
     background-color: #eefffb;
     color: #000000;
-    font-family: 'Anton', 'Helvetica', Arial, system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
   }
 
   h1,
@@ -23,9 +26,11 @@
   h4,
   h5,
   h6 {
-    font-family: 'Futura', 'Helvetica', Arial, system-ui, sans-serif;
+    font-family: 'Poppins', system-ui, sans-serif;
     font-weight: 700;
     color: #000000;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   h1 {
@@ -83,5 +88,36 @@
 @layer utilities {
   .transition-smooth {
     transition: all 0.3s ease-in-out;
+  }
+
+  /* Glassmorphism Effects */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(22, 197, 180, 0.1);
+    box-shadow: 0 8px 32px rgba(22, 197, 180, 0.1);
+  }
+
+  .glass-primary {
+    background: rgba(22, 197, 180, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(22, 197, 180, 0.2);
+  }
+
+  .glass-header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(22, 197, 180, 0.1);
+    box-shadow: 0 2px 20px rgba(22, 197, 180, 0.08);
   }
 }

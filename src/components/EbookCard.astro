@@ -14,6 +14,7 @@ export interface Props {
   destacado?: boolean;
   slug: string;
   variant?: 'primary' | 'secondary' | 'accent';
+  imagenUrl?: string;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   destacado = false,
   slug,
   variant = 'primary',
+  imagenUrl,
 } = Astro.props;
 ---
 
@@ -38,14 +40,23 @@ const {
   )}
 
   <div class="mb-4">
-    <PlaceholderImage
-      width={300}
-      height={400}
-      text={title}
-      variant={variant}
-      alt={`Ebook: ${title}`}
-      class="rounded-xl"
-    />
+    {imagenUrl ? (
+      <img
+        src={imagenUrl}
+        alt={`Ebook: ${title}`}
+        class="w-full h-auto object-cover rounded-xl"
+        loading="lazy"
+      />
+    ) : (
+      <PlaceholderImage
+        width={300}
+        height={400}
+        text={title}
+        variant={variant}
+        alt={`Ebook: ${title}`}
+        class="rounded-xl"
+      />
+    )}
   </div>
 
   <h4 class="text-xl mb-2 font-bold">{title}</h4>

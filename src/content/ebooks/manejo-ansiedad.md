@@ -1,16 +1,17 @@
 ---
-title: Guía Práctica para el Manejo de la Ansiedad
+title: Cuaderno Antiansiedad
 precioCop: 45000
-descripcion: Técnicas efectivas y ejercicios prácticos para controlar la ansiedad en tu día a día
+descripcion: Técnicas clínicas para calmar tensión, baja presencia, agotamiento mental o alerta constante. Respiración, descarga emocional y regulación real del sistema nervioso.
 paginas: 85
 temas:
-  - Reconocimiento de síntomas de ansiedad
-  - Técnicas de respiración y relajación
-  - Reestructuración cognitiva
-  - Mindfulness aplicado
-  - Ejercicios prácticos diarios
+  - Regulación del sistema nervioso
+  - Técnicas de respiración clínicas
+  - Descarga emocional
+  - Calmar tensión corporal
+  - Manejo de alerta constante
 destacado: true
-orden: 1
+orden: 5
+imagenUrl: /mi_cuaderno_saludable.jpg
 ---
 
 ## Sobre este ebook

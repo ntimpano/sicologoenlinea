@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import EbookCard from '@/components/EbookCard.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import { MESSAGES } from '@/utils/whatsapp';
+
+// Obtener todas las colecciones
+const allServices = await getCollection('services');
+const allEbooks = await getCollection('ebooks');
+
+// Ordenar por campo 'orden' y filtrar activos
+const services = allServices
+  .filter((service) => service.data.activo)
+  .sort((a, b) => a.data.orden - b.data.orden);
+
+const ebooks = allEbooks.sort((a, b) => a.data.orden - b.data.orden);
+
+// Separar ebooks destacados
+const ebooksDestacados = ebooks.filter((ebook) => ebook.data.destacado);
+
+// Definir variantes fuera del JSX
+const variants = ['primary', 'secondary', 'accent'] as const;
+type Variant = typeof variants[number];
+---
+
+<BaseLayout
+  title="Servicios"
+  description="Descubre nuestros servicios de terapia psicológica online y recursos digitales para tu bienestar emocional en Colombia."
+>
+  <!-- Hero Section -->
+  <Section padding="lg" class="bg-gradient-to-br from-accent to-primary-50">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="mb-6">Nuestros Servicios</h1>
+        <p class="text-xl text-gray-800 leading-relaxed">
+          Ofrecemos atención psicológica profesional y recursos digitales diseñados para acompañarte en tu proceso de bienestar emocional.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Servicios Terapéuticos -->
+  <Section padding="lg">
+    <Container>
+      <div class="mb-12">
+        <h2 class="text-center mb-4">Servicios de Terapia</h2>
+        <p class="text-center text-lg text-gray-800 max-w-2xl mx-auto">
+          Sesiones profesionales online adaptadas a tus necesidades
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => {
+          const variant = variants[index % variants.length] as Variant;
+          
+          return (
+            <ServiceCard
+              title={service.data.title}
+              modalidad={service.data.modalidad}
+              duracion={service.data.duracion}
+              precioCop={service.data.precioCop}
+              descripcion={service.data.descripcion}
+              beneficios={service.data.beneficios}
+              slug={service.slug}
+              variant={variant}
+            />
+          );
+        })}
+      </div>
+
+      <div class="text-center mt-12">
+        <WhatsAppButton message={MESSAGES.CONSULTA_GENERAL} class="text-lg px-8 py-4">
+          ¿Tienes dudas? Contáctanos
+        </WhatsAppButton>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Recursos Digitales (Ebooks) -->
+  <Section padding="lg" class="bg-gray-50">
+    <Container>
+      <div class="mb-12">
+        <h2 class="text-center mb-4">Recursos Digitales</h2>
+        <p class="text-center text-lg text-gray-800 max-w-2xl mx-auto">
+          Ebooks con herramientas prácticas para tu desarrollo personal
+        </p>
+      </div>
+
+      {ebooksDestacados.length > 0 && (
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6 text-center">Más populares</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {ebooksDestacados.map((ebook, index) => {
+              const variant = variants[index % variants.length] as Variant;
+              
+              return (
+                <EbookCard
+                  title={ebook.data.title}
+                  precioCop={ebook.data.precioCop}
+                  descripcion={ebook.data.descripcion}
+                  paginas={ebook.data.paginas}
+                  temas={ebook.data.temas}
+                  destacado={ebook.data.destacado}
+                  slug={ebook.slug}
+                  variant={variant}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <div>
+        <h3 class="text-2xl font-semibold mb-6 text-center">Todos los recursos</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {ebooks.map((ebook, index) => {
+            const variant = variants[index % variants.length] as Variant;
+            
+            return (
+              <EbookCard
+                title={ebook.data.title}
+                precioCop={ebook.data.precioCop}
+                descripcion={ebook.data.descripcion}
+                paginas={ebook.data.paginas}
+                temas={ebook.data.temas}
+                destacado={ebook.data.destacado}
+                slug={ebook.slug}
+                variant={variant}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA Final -->
+  <Section padding="md" class="bg-primary text-white">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="mb-4 text-white">¿Listo para comenzar?</h2>
+        <p class="text-xl mb-8 text-primary-50">
+          Contáctanos hoy y agenda tu primera sesión con nuestro equipo profesional
+        </p>
+        <WhatsAppButton message={MESSAGES.AGENDAR_CITA}>
+          <span class="text-lg px-4">Agendar mi sesión</span>
+        </WhatsAppButton>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- WhatsApp Floating Button -->
+  <WhatsAppButton message={MESSAGES.CONSULTA_GENERAL} variant="floating" position="bottom-right" />
+</BaseLayout>

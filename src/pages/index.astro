@@ -1,31 +1,216 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import PlaceholderImage from '@/components/PlaceholderImage.astro';
+import { MESSAGES } from '@/utils/whatsapp';
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sicologoenlinea - Apoyo psicológico profesional online</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50">
-      <div class="text-center px-4">
-        <h1 class="text-primary mb-4">sicologoenlinea</h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Proyecto en construcción - Fase 1 iniciada
+<BaseLayout
+  title="Inicio"
+  description="Apoyo psicológico profesional online en Colombia. Especialistas en ansiedad, depresión y bienestar emocional. Agenda tu sesión hoy."
+>
+  <!-- Hero Section -->
+  <Section padding="lg" class="bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <Container>
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="mb-6">
+          Apoyo profesional para tu
+          <span class="text-primary">bienestar emocional</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Somos un equipo de psicólogos especializados en terapia online. Te acompañamos en tu proceso de crecimiento personal y bienestar mental desde cualquier lugar de Colombia.
         </p>
-        <div class="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl shadow-soft">
-          ✓ Astro + TypeScript configurado
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <WhatsAppButton message={MESSAGES.AGENDAR_CITA}>
+            Agenda tu sesión
+          </WhatsAppButton>
+          <Button variant="outline" href="/servicios" size="lg">
+            Ver servicios
+          </Button>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+    </Container>
+  </Section>
+
+  <!-- Servicios Destacados -->
+  <Section padding="lg">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="mb-4">Nuestros servicios</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Ofrecemos atención psicológica personalizada adaptada a tus necesidades
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Servicio 1 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={400}
+              height={250}
+              text="Terapia Individual"
+              variant="primary"
+              alt="Terapia Individual Online"
+              class="rounded-xl"
+            />
+          </div>
+          <h3 class="text-2xl mb-3">Terapia Individual</h3>
+          <p class="text-gray-600 mb-4">
+            Sesiones personalizadas de 60 minutos enfocadas en ansiedad, depresión, autoestima y crecimiento personal.
+          </p>
+          <p class="text-primary font-bold text-xl mb-4">$120.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_SERVICIO('Terapia Individual')} class="w-full justify-center" />
+        </Card>
+
+        <!-- Servicio 2 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={400}
+              height={250}
+              text="Terapia de Parejas"
+              variant="secondary"
+              alt="Terapia de Parejas Online"
+              class="rounded-xl"
+            />
+          </div>
+          <h3 class="text-2xl mb-3">Terapia de Parejas</h3>
+          <p class="text-gray-600 mb-4">
+            Sesiones de 90 minutos para fortalecer la comunicación, resolver conflictos y mejorar la relación.
+          </p>
+          <p class="text-primary font-bold text-xl mb-4">$180.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_SERVICIO('Terapia de Parejas')} class="w-full justify-center" />
+        </Card>
+
+        <!-- Servicio 3 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={400}
+              height={250}
+              text="Orientación Vocacional"
+              variant="accent"
+              alt="Orientación Vocacional Online"
+              class="rounded-xl"
+            />
+          </div>
+          <h3 class="text-2xl mb-3">Orientación Vocacional</h3>
+          <p class="text-gray-600 mb-4">
+            Descubre tu vocación y define tu camino profesional con pruebas y acompañamiento especializado.
+          </p>
+          <p class="text-primary font-bold text-xl mb-4">$100.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_SERVICIO('Orientación Vocacional')} class="w-full justify-center" />
+        </Card>
+      </div>
+
+      <div class="text-center mt-12">
+        <Button href="/servicios" variant="primary" size="lg">
+          Ver todos los servicios
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Ebooks Destacados -->
+  <Section padding="lg" class="bg-gray-50">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="mb-4">Recursos digitales</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Descarga nuestros ebooks con herramientas prácticas para tu bienestar
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Ebook 1 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={300}
+              height={400}
+              text="Manejo de Ansiedad"
+              variant="primary"
+              alt="Ebook Manejo de Ansiedad"
+              class="rounded-xl"
+            />
+          </div>
+          <h4 class="text-xl mb-2">Guía práctica: Manejo de la ansiedad</h4>
+          <p class="text-gray-600 mb-4 text-sm">
+            Técnicas efectivas para controlar la ansiedad en tu día a día
+          </p>
+          <p class="text-secondary font-bold text-lg mb-4">$45.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_EBOOK('Manejo de la ansiedad')} class="w-full justify-center text-sm" />
+        </Card>
+
+        <!-- Ebook 2 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={300}
+              height={400}
+              text="Superar Depresión"
+              variant="secondary"
+              alt="Ebook Superar Depresión"
+              class="rounded-xl"
+            />
+          </div>
+          <h4 class="text-xl mb-2">Camino hacia el bienestar emocional</h4>
+          <p class="text-gray-600 mb-4 text-sm">
+            Estrategias comprobadas para superar la depresión
+          </p>
+          <p class="text-secondary font-bold text-lg mb-4">$50.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_EBOOK('Camino hacia el bienestar emocional')} class="w-full justify-center text-sm" />
+        </Card>
+
+        <!-- Ebook 3 -->
+        <Card>
+          <div class="mb-4">
+            <PlaceholderImage
+              width={300}
+              height={400}
+              text="Autoestima Práctica"
+              variant="accent"
+              alt="Ebook Autoestima Práctica"
+              class="rounded-xl"
+            />
+          </div>
+          <h4 class="text-xl mb-2">Construye tu autoestima</h4>
+          <p class="text-gray-600 mb-4 text-sm">
+            Ejercicios prácticos para fortalecer tu confianza personal
+          </p>
+          <p class="text-secondary font-bold text-lg mb-4">$40.000 COP</p>
+          <WhatsAppButton message={MESSAGES.INFO_EBOOK('Construye tu autoestima')} class="w-full justify-center text-sm" />
+        </Card>
+      </div>
+
+      <div class="text-center mt-12">
+        <Button href="/servicios" variant="outline" size="lg">
+          Ver más recursos
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA Final -->
+  <Section padding="lg" class="bg-primary text-white">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="mb-6 text-white">¿Listo para dar el primer paso?</h2>
+        <p class="text-xl mb-8 text-primary-100">
+          Agenda tu primera sesión hoy y comienza tu proceso de transformación personal con el acompañamiento de nuestro equipo profesional.
+        </p>
+        <WhatsAppButton message={MESSAGES.AGENDAR_CITA}>
+          <span class="text-lg px-4">Contactar ahora</span>
+        </WhatsAppButton>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- WhatsApp Floating Button -->
+  <WhatsAppButton message={MESSAGES.CONSULTA_GENERAL} variant="floating" position="bottom-right" />
+</BaseLayout>

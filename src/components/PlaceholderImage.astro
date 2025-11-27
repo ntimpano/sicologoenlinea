@@ -1,0 +1,32 @@
+---
+import { generatePlaceholder } from '@/utils/placeholder';
+
+export interface Props {
+  width: number;
+  height: number;
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+  alt?: string;
+  class?: string;
+}
+
+const {
+  width,
+  height,
+  text,
+  variant = 'primary',
+  alt = 'Placeholder image',
+  class: className = '',
+} = Astro.props;
+
+const placeholderSrc = generatePlaceholder(width, height, text, variant);
+---
+
+<img
+  src={placeholderSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  loading="lazy"
+  class={`w-full h-auto object-cover ${className}`}
+/>

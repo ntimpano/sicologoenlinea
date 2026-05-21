@@ -3,7 +3,7 @@ import { formatDate } from '@/utils/format';
 
 export interface Props {
   allPosts: Array<{
-    slug: string;
+    id: string;
     data: {
       title: string;
       fecha: Date;
@@ -24,7 +24,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.fecha.getTime() - a.data.fech
     <ul class="space-y-4">
       {sortedPosts.map((post) => (
         <li class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
-          <a href={`/blog/${post.slug}`} class="block group">
+          <a href={`/blog/${post.id.replace('.md', '')}`} class="block group">
             <h4 class="font-medium text-sm mb-1 group-hover:text-primary transition-smooth line-clamp-2">
               {post.data.title}
             </h4>

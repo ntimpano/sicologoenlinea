@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
@@ -10,22 +10,23 @@ import { formatDate } from '@/utils/format';
 import { MESSAGES } from '@/utils/whatsapp';
 
 export const getStaticPaths = (async () => {
+  const slugFrom = (entry) => entry.id.replace('.md', '');
   const blogPosts = await getCollection('blog');
   return blogPosts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
+    params: { slug: slugFrom(post) },
+    props: { post, slug: slugFrom(post) },
   }));
 }) satisfies GetStaticPaths;
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { post, slug: currentSlug } = Astro.props;
+const { Content } = await render(post);
 
 // Obtener todos los posts para el sidebar
 const allPosts = await getCollection('blog');
 
 // Obtener posts relacionados (excluyendo el actual)
 const relatedPosts = allPosts
-  .filter((p) => p.slug !== post.slug)
+  .filter((p) => p.id.replace('.md', '') !== currentSlug)
   .sort((a, b) => b.data.fecha.getTime() - a.data.fecha.getTime())
   .slice(0, 3);
 ---
@@ -150,7 +151,7 @@ const relatedPosts = allPosts
               <h3 class="text-2xl font-bold mb-6">Artículos relacionados</h3>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {relatedPosts.map((relatedPost) => (
-                  <a href={`/blog/${relatedPost.slug}`} class="group">
+                  <a href={`/blog/${relatedPost.id.replace('.md', '')}`} class="group">
                     <div class="bg-white rounded-xl shadow-soft p-4 hover:shadow-soft-md transition-smooth">
                       <h4 class="font-bold text-sm mb-2 group-hover:text-primary transition-smooth line-clamp-2">
                         {relatedPost.data.title}

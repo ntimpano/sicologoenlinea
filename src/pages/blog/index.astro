@@ -44,7 +44,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.fecha.getTime() - a.data.fech
                 descripcionCorta={post.data.descripcionCorta}
                 fecha={post.data.fecha}
                 destacado={post.data.destacado}
-                slug={post.slug}
+                slug={post.id.replace('.md', '')}
                 imagenUrl={post.data.imagenUrl}
               />
             ))}

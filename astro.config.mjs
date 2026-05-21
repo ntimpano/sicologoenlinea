@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
-
+import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://sicologoenlinea.co',
   integrations: [
-    tailwind(),
     sitemap({
       i18n: {
         defaultLocale: 'es',
@@ -18,4 +16,7 @@ export default defineConfig({
   ],
   output: 'static',
   adapter: vercel(),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

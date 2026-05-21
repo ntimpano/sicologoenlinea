@@ -1,11 +1,11 @@
 import { defineCollection, z } from 'astro:content';
-
+import { glob } from 'astro/loaders';
 const servicesCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
     modalidad: z.enum(['individual', 'parejas', 'familiar', 'grupal']),
-    duracion: z.number(), // en minutos
+    duracion: z.number(),
     precioCop: z.number(),
     descripcion: z.string(),
     beneficios: z.array(z.string()),
@@ -13,9 +13,8 @@ const servicesCollection = defineCollection({
     activo: z.boolean().default(true),
   }),
 });
-
 const ebooksCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/ebooks' }),
   schema: z.object({
     title: z.string(),
     precioCop: z.number(),
@@ -27,9 +26,8 @@ const ebooksCollection = defineCollection({
     imagenUrl: z.string().optional(),
   }),
 });
-
 const blogCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     descripcionCorta: z.string().max(160),
@@ -40,7 +38,6 @@ const blogCollection = defineCollection({
     metaKeywords: z.array(z.string()).optional(),
   }),
 });
-
 export const collections = {
   services: servicesCollection,
   ebooks: ebooksCollection,

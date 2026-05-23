@@ -62,7 +62,6 @@ type Variant = typeof variants[number];
               title={service.data.title}
               modalidad={service.data.modalidad}
               duracion={service.data.duracion}
-              precioCop={service.data.precioCop}
               descripcion={service.data.descripcion}
               beneficios={service.data.beneficios}
               slug={service.slug}
@@ -100,7 +99,6 @@ type Variant = typeof variants[number];
               return (
                 <EbookCard
                   title={ebook.data.title}
-                  precioCop={ebook.data.precioCop}
                   descripcion={ebook.data.descripcion}
                   paginas={ebook.data.paginas}
                   temas={ebook.data.temas}
@@ -124,7 +122,6 @@ type Variant = typeof variants[number];
             return (
               <EbookCard
                 title={ebook.data.title}
-                precioCop={ebook.data.precioCop}
                 descripcion={ebook.data.descripcion}
                 paginas={ebook.data.paginas}
                 temas={ebook.data.temas}

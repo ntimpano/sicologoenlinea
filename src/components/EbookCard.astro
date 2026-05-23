@@ -2,12 +2,10 @@
 import Card from './ui/Card.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import PlaceholderImage from './PlaceholderImage.astro';
-import { formatPrice } from '@/utils/format';
 import { MESSAGES } from '@/utils/whatsapp';
 
 export interface Props {
   title: string;
-  precioCop: number;
   descripcion: string;
   paginas: number;
   temas: string[];
@@ -19,7 +17,6 @@ export interface Props {
 
 const {
   title,
-  precioCop,
   descripcion,
   paginas,
   temas,
@@ -81,7 +78,6 @@ const {
   </div>
 
   <div class="mt-auto">
-    <p class="text-secondary font-bold text-lg mb-3">{formatPrice(precioCop)}</p>
     <WhatsAppButton 
       message={MESSAGES.INFO_EBOOK(title)} 
       class="w-full justify-center text-sm"

@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://sicologoenlinea.co',
   integrations: [
@@ -15,7 +16,7 @@ export default defineConfig({
     }),
   ],
   output: 'static',
-  adapter: vercel(),
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
   },
